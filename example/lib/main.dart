@@ -9,7 +9,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool _canVibrate = true;
+  bool? _canVibrate = true;
   final Iterable<Duration> pauses = [
     const Duration(milliseconds: 500),
     const Duration(milliseconds: 1000),
@@ -23,10 +23,10 @@ class _MyAppState extends State<MyApp> {
   }
 
   init() async {
-    bool canVibrate = await Vibrate.canVibrate;
+    bool? canVibrate = await Vibrate.canVibrate;
     setState(() {
       _canVibrate = canVibrate;
-      _canVibrate
+      _canVibrate!
           ? print("This device can vibrate")
           : print("This device cannot vibrate");
     });
@@ -42,7 +42,7 @@ class _MyAppState extends State<MyApp> {
             ListTile(
               title: Text("Vibrate"),
               leading: Icon(Icons.vibration, color: Colors.teal),
-              onTap: !_canVibrate
+              onTap: !_canVibrate!
                   ? null
                   : () {
                       Vibrate.vibrate();
@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
             ListTile(
               title: Text("Vibrate with Pauses"),
               leading: Icon(Icons.vibration, color: Colors.brown),
-              onTap: !_canVibrate
+              onTap: !_canVibrate!
                   ? null
                   : () {
                       Vibrate.vibrateWithPauses(pauses);
@@ -61,7 +61,7 @@ class _MyAppState extends State<MyApp> {
             ListTile(
               title: Text("Impact"),
               leading: Icon(Icons.tap_and_play, color: Colors.orange),
-              onTap: !_canVibrate
+              onTap: !_canVibrate!
                   ? null
                   : () {
                       Vibrate.feedback(FeedbackType.impact);
@@ -70,7 +70,7 @@ class _MyAppState extends State<MyApp> {
             ListTile(
               title: Text("Selection"),
               leading: Icon(Icons.select_all, color: Colors.blue),
-              onTap: !_canVibrate
+              onTap: !_canVibrate!
                   ? null
                   : () {
                       Vibrate.feedback(FeedbackType.selection);
@@ -79,7 +79,7 @@ class _MyAppState extends State<MyApp> {
             ListTile(
               title: Text("Success"),
               leading: Icon(Icons.check, color: Colors.green),
-              onTap: !_canVibrate
+              onTap: !_canVibrate!
                   ? null
                   : () {
                       Vibrate.feedback(FeedbackType.success);
@@ -88,7 +88,7 @@ class _MyAppState extends State<MyApp> {
             ListTile(
               title: Text("Warning"),
               leading: Icon(Icons.warning, color: Colors.red),
-              onTap: !_canVibrate
+              onTap: !_canVibrate!
                   ? null
                   : () {
                       Vibrate.feedback(FeedbackType.warning);
@@ -97,7 +97,7 @@ class _MyAppState extends State<MyApp> {
             ListTile(
               title: Text("Error"),
               leading: Icon(Icons.error, color: Colors.red),
-              onTap: !_canVibrate
+              onTap: !_canVibrate!
                   ? null
                   : () {
                       Vibrate.feedback(FeedbackType.error);
@@ -107,7 +107,7 @@ class _MyAppState extends State<MyApp> {
             ListTile(
               title: Text("Heavy"),
               leading: Icon(Icons.notification_important, color: Colors.red),
-              onTap: !_canVibrate
+              onTap: !_canVibrate!
                   ? null
                   : () {
                       Vibrate.feedback(FeedbackType.heavy);
@@ -116,7 +116,7 @@ class _MyAppState extends State<MyApp> {
             ListTile(
               title: Text("Medium"),
               leading: Icon(Icons.notification_important, color: Colors.green),
-              onTap: !_canVibrate
+              onTap: !_canVibrate!
                   ? null
                   : () {
                       Vibrate.feedback(FeedbackType.medium);
@@ -126,7 +126,7 @@ class _MyAppState extends State<MyApp> {
               title: Text("Light"),
               leading:
                   Icon(Icons.notification_important, color: Colors.yellow[700]),
-              onTap: !_canVibrate
+              onTap: !_canVibrate!
                   ? null
                   : () {
                       Vibrate.feedback(FeedbackType.light);

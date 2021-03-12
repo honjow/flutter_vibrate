@@ -23,8 +23,8 @@ class Vibrate {
       'vibrate', {"duration": _DEFAULT_VIBRATION_DURATION.inMilliseconds});
 
   /// Whether the device can actually vibrate or not
-  static Future<bool> get canVibrate async {
-    final bool isOn = await _channel.invokeMethod('canVibrate');
+  static Future<bool?> get canVibrate async {
+    final bool? isOn = await _channel.invokeMethod('canVibrate');
     return isOn;
   }
 
